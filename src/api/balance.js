@@ -3,17 +3,21 @@ import web3 from './utils/web3';
 
 export default ({ config }) => resource({
 
-  id : 'address',
+  id: 'address',
 
   load(req, id, callback) {
     let address = id;
-    let err = address ? null : 'Address not found'
+    let err = web3.isAddress(address) ? null : 'Address is invalid'
     callback(err, address);
+  },
+
+  index({ params }, res) {
+    res.json({message: 'Ethereum Classic API - Get the balance of a given address'  })
   },
   
   read({ address }, res) {
-    const balanceWei = web3.eth.getBalance(address);
-    const balanceEther = web3.fromWei(balanceWei, "ether");
+    const balanceWei = web3.eth.getBalance(address, 'pending');
+    const balanceEther = web3.fromWei(balanceWei, 'ether');
     res.json({ 
       address: address,
     	balance: { 
