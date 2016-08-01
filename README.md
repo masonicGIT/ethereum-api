@@ -24,8 +24,23 @@ npm start
 Usage
 ---------------
 ```sh
-# get balance
+
+#  get balance
+
 curl localhost:8080/api/v1/etc/balance/:address
+
+response:
+
+{"address":"0xd66e645fcb0b971b5ecd7ee3047f61d8eb0dae9b","balance":{"wei":"163168220000000000","ether":"0.16316822"}}
+
+# post raw transaction
+
+curl -X POST -H 'Content-Type: application/json' -d '{"rawtx": "f86b46 ... 828703c"}' localhost:8080/api/v1/etc/transaction
+
+response:
+
+{"data":"0x803c53376106c3624346ff0550eeab8b7750a883da2bfd1de8a1159af3019067","message":"","error":false}
+
 ```
 
 License
