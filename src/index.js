@@ -20,9 +20,10 @@ const init = () => {
 
   app.use('/api/v1/etc', api({ config }));
 
-  app.server.listen(process.env.PORT || config.port);
+  app.server.listen(process.env.PORT || config.port, function () {
+    console.log("Started on port %d", this.address().port);
+  })
 
-  console.log(`Started on port ${app.server.address().port}`);
 };
 
 init();
