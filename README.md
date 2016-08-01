@@ -8,7 +8,7 @@ Getting Started
 
 ```sh
 # clone it
-git clone git@github.com:masonicgit/ethereum-api.git
+git clone https://github.com/masonicGIT/ethereum-api.git
 cd ethereum-api
 
 # Install dependencies
