@@ -1,7 +1,7 @@
-Ethereum API
+Ethereum Classic API
 ==================================
 
-An open source Ethereum API
+An open source Ethereum Classic API
 
 Getting Started
 ---------------
