@@ -49,14 +49,14 @@ fi
 echo "Copying keys $ROOT_DIR/keystore/$ID $CURRENT_DIR/keystore"
 cp -R $ROOT_DIR/keystore/$ID/keystore/ $CURRENT_DIR/keystore/
 
-BZZKEY=`$GETH --datadir=$CURRENT_DIR account list|head -n1|perl -ne '/([a-f0-9]{40})/ && print $1'`
-
 # bring up node `dd` (double digit)
 # - using <rootdir>/<dd>
 # - listening on port 303dd, (like 30300, 30301, ...)
 # - with the account unlocked
 # - launching json-rpc server on port 81dd (like 8100, 8101, 8102, ...)
 echo "$GETH --datadir=$CURRENT_DIR \
+  --oppose-dao-fork \
+  --cache=512 \
   --identity="$ID" \
   --port=$PORT \
   --rpc --rpcport=$RPCPORT --rpccorsdomain='*' $* \
@@ -64,6 +64,8 @@ echo "$GETH --datadir=$CURRENT_DIR \
 "
 
 $GETH --datadir=$CURRENT_DIR \
+  --oppose-dao-fork \
+  --cache=512 \
   --identity="$ID" \
   --port=$PORT \
   --rpc --rpcport=$RPCPORT --rpccorsdomain='*' $* \
