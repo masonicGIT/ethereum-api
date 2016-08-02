@@ -8,7 +8,7 @@
 #
 # Usage:
 #
-#     bash ./geth.sh < ROOT_DIR > < COUNT > < [[params]...]
+#     bash ./spawnGetNodes.sh < ROOT_DIR > < COUNT > < [[params]...]
 #
 # Params:
 #
@@ -33,7 +33,7 @@
 if [ -z "$1" ] || [ -z "$2" ]
   then
     echo "Please set the number of nodes that you would like to spin up and a root directory for storing your data"
-    echo "bash geth.sh < ROOT_DIR > < COUNT >" 
+    echo "bash spawnGethNodes.sh < ROOT_DIR > < COUNT >" 
     exit 1
 fi
 
@@ -73,7 +73,7 @@ fi
 for (( i = 0; i < COUNT; ++i )); do
   ID=`printf "%02d" $i`
   mkdir -p $CURRENT_DIR/data/$ID
+
   echo "launching node $i/$COUNT ---> tail-f $dir/log/$ID.log"
-  echo GETH=$GETH bash ./gethup.sh $CURRENT_DIR $ID $*
-  GETH=$GETH bash ./gethup.sh $CURRENT_DIR $ID $*
+  GETH=$GETH bash ./runGethNode.sh $CURRENT_DIR $ID $*
 done
