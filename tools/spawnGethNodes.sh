@@ -2,7 +2,7 @@
 #
 # Geth.sh - Spawn local Geth nodes
 # 
-# Influenced by: 
+# Influenced by:
 #
 #     https://github.com/ethersphere/eth-utils
 #

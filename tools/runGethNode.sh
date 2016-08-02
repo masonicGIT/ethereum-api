@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Gethup.sh - Spawn a local geth node
+# runGethNode.sh - Spawn a local geth node
 #
 # Influenced by:
 #
@@ -8,7 +8,7 @@
 #
 # Usage:
 #
-#     bash ./gethup.sh < ROOT_DIR > < INSTANCE_NAME >
+#     bash ./runGethNode.sh < ROOT_DIR > < INSTANCE_NAME >
 #
 
 ROOT_DIR=$1
@@ -64,9 +64,9 @@ echo "$GETH --datadir=$CURRENT_DIR \
 "
 
 $GETH --datadir=$CURRENT_DIR \
-  --oppose-dao-fork \
   --cache=512 \
-  --identity="$ID" \
+  --oppose-dao-fork \
+  --identity=$ID \
   --port=$PORT \
   --rpc --rpcport=$RPCPORT --rpccorsdomain='*' $* \
    2>&1 | tee "$STABLE_LOG" > "$LOG" &
