@@ -1,5 +1,14 @@
 {
   "port": 8080,
   "bodyLimit": "100kb",
-  "corsHeaders": ["Link"]
+  "corsHeaders": [
+    "Link"
+  ],
+  "nodes": [
+    "31100",
+    "31101",
+    "31102",
+    "31103",
+    "31104"
+  ]
 }

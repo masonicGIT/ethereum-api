@@ -24,7 +24,10 @@ STABLE_LOG=$ROOT_DIR/log/$ID.log
 PASSWORD=$ID
 PORT=311$ID
 RPCPORT=82$ID
-
+CONFIG_FILE="config.json"
+CONFIG_FILE_PATH="../src/$CONFIG_FILE"
+CONFIG_FILE_CONTENTS=`cat $CONFIG_FILE_PATH`
+ 
 mkdir -p $ROOT_DIR/data
 mkdir -p $ROOT_DIR/log
 ln -sf "$LOG" "$LINK_LOG"
@@ -54,14 +57,6 @@ cp -R $ROOT_DIR/keystore/$ID/keystore/ $CURRENT_DIR/keystore/
 # - listening on port 303dd, (like 30300, 30301, ...)
 # - with the account unlocked
 # - launching json-rpc server on port 81dd (like 8100, 8101, 8102, ...)
-echo "$GETH --datadir=$CURRENT_DIR \
-  --oppose-dao-fork \
-  --cache=512 \
-  --identity="$ID" \
-  --port=$PORT \
-  --rpc --rpcport=$RPCPORT --rpccorsdomain='*' $* \
-  2>&1 | tee "$STABLE_LOG" > "$LOG" &
-"
 
 $GETH --datadir=$CURRENT_DIR \
   --cache=512 \
@@ -70,4 +65,7 @@ $GETH --datadir=$CURRENT_DIR \
   --port=$PORT \
   --rpc --rpcport=$RPCPORT --rpccorsdomain='*' $* \
    2>&1 | tee "$STABLE_LOG" > "$LOG" &
+
+# Add the geth node to the list
+jq --arg port "${PORT}" '.nodes |= .+ [$port]' <<<"$CONFIG_FILE_CONTENTS" > $CONFIG_FILE_PATH
 
