@@ -9,4 +9,5 @@ const data = () => {
 const models = {
   data: data
 }
+
 export default models

@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
+    "dev-geth": ". ./tools/geth/spawnGethNodes.sh ./data 2; nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
     "start": "node dist",
+    "start-geth": ". ./tools/geth/spawnGethNodes.sh ./data 2; node dist",
     "prestart": "npm run -s build",
     "test": "eslint src"
   },
@@ -33,10 +35,12 @@
   "author": "Mason Borda",
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^3.4.1",
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
     "cors": "^2.7.1",
     "express": "^4.13.3",
+    "node-cache": "^3.2.1",
     "resource-router-middleware": "^0.5.1",
     "web3": "^0.16.0"
   },
