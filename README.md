@@ -3,6 +3,15 @@ Ethereum Classic API
 
 An open source Ethereum Classic API
 
+Requirements
+------------
+
+- NodeJS - https://nodejs.org/en
+- JQ-Cli - https://stedolan.github.io/jq
+- Redis - http://redis.io
+- Geth - https://ethereum.github.io/go-ethereum
+
+
 Getting Started
 ---------------
 
