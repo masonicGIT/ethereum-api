@@ -1,18 +1,19 @@
 Ethereum Classic API
 ==================================
 
-An open source Ethereum Classic API
+An open source Ethereum Classic API.
+
+Provides the option of spinning up N load-balanced geth nodes upon startup. Seperate accounts and folder are allocated upon startup if they do not yet exist. This project is currently running without a database.
 
 Requirements
 ------------
 
 - NodeJS - https://nodejs.org/en
 - JQ-Cli - https://stedolan.github.io/jq
-- Redis - http://redis.io
 - Geth - https://ethereum.github.io/go-ethereum
 
 
-Getting Started
+Getting Started 
 ---------------
 
 ```sh
@@ -30,6 +31,24 @@ npm run dev
 npm start
 ```
 
+Getting Started w/ Geth
+---------------
+
+```sh
+# Clone the repository
+git clone https://github.com/masonicGIT/ethereum-api.git
+cd ethereum-api
+
+# Install the dependencies
+npm install
+
+# Start development live-reload server
+npm run dev-geth
+
+# Start production server
+npm run start-geth
+
+```
 Usage
 ---------------
 ```sh
